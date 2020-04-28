@@ -10,7 +10,7 @@ export default new Router({
     meta: {
       title: '费用报销'
     },
-    component: () => import( /* webpackChunkName: "home" */ './views/home.vue')
+    component: () => import( /* webpackChunkName: "home" */ './components/Home.vue')
   },
   {
     path: '/test',
@@ -18,7 +18,7 @@ export default new Router({
     meta: {
       title: '图片暗水印-解密'
     },
-    component: () => import( /* webpackChunkName: "test" */ './views/test.vue')
+    component: () => import( /* webpackChunkName: "test" */ './components/Test.vue')
   },
   ]
 })

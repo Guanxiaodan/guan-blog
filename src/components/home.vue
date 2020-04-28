@@ -14,7 +14,6 @@
 // import SelectItem from '@/components/SelectItem.vue';
 
 export default {
-  name: 'home',
   components: {
     // SelectItem
   },
