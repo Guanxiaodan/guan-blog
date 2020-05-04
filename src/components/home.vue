@@ -60,6 +60,7 @@ export default {
         console.log('POST请求失败', err)
       })
     },
+
     fourthSend(){
       this.$axios.post('/api/fourth',{name:'guanxiaodan'})
       .then((res)=>{
