@@ -3,7 +3,7 @@ var axios = require('axios')
 axios.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么
   // 比如 打印请求的url
-  console.log("real request url ==> ", config.url)
+  console.log("真实请求地址 ==> ", config)
   return config;
 }, function (error) {
   // 对请求错误做些什么

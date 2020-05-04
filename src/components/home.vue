@@ -61,11 +61,8 @@ export default {
       })
     },
     fourthSend(){
-      this.$axios({
-        methods:'POST',
-        url:'/api/fourth',
-        data:'上火'
-      }).then((res)=>{
+      this.$axios.post('/api/fourth',{name:'guanxiaodan'})
+      .then((res)=>{
         console.log('fourthSend请求成功', res)
       }).catch((err)=>{
         console.log('fourthSend请求失败', err)
