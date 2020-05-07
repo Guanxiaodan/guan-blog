@@ -1,13 +1,35 @@
 <template>
   <transition name='fade'>
-    <div class=''>
-      首页
+    <div class='blog-box'>
+      <div class="list">
+        <div class="item" v-for="blog in blogList" :key="blog.blogID" @click="fourthSend(blog.blogID)">
+          {{blog.title}}
+          <div v-if="detailInfo.startTime && blog.blogID==activeID">
+            <div>创建时间：{{detailInfo.startTime}}</div>
+            <div>编辑时间：{{detailInfo.editTime}}</div>
+            <div>阅读量：{{detailInfo.readNum}}</div>
+          </div>
+        </div>
+      </div>
     </div>
   </transition>
 </template>
 
 <style scoped >
-  
+  .blog-box{
+    padding: 20px;
+  }
+  .list{
+    display: flex;
+
+  }
+  .item{
+    margin-right: 20px;
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    background-color: bisque;
+  }
 </style>
 
 <script>
@@ -19,14 +41,16 @@ export default {
   },
   data() {
     return {
-
+      blogList:[],
+      activeID:'',
+      detailInfo:{}
     }
   },
   mounted: function () {
-    this.firstSend()
+    // this.firstSend()
     this.secondSend()
-    this.thirdSend()
-    this.fourthSend()
+    // this.thirdSend()
+    // this.fourthSend()
 
   },
   methods:{
@@ -46,6 +70,7 @@ export default {
         url:'/api/list'
       }).then((res)=>{
         console.log('secondSend请求成功', res)
+        this.blogList = res.data
       }).catch((err)=>{
         console.log('secondSend请求失败', err)
       })
@@ -61,10 +86,12 @@ export default {
       })
     },
 
-    fourthSend(){
-      this.$axios.post('/api/fourth',{name:'guanxiaodan'})
+    fourthSend(id){
+      this.activeID = id
+      this.$axios.post('/api/fourth',{blogID:id})
       .then((res)=>{
         console.log('fourthSend请求成功', res)
+        this.detailInfo = res.data[0]
       }).catch((err)=>{
         console.log('fourthSend请求失败', err)
       })
