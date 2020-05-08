@@ -21,7 +21,6 @@
   }
   .list{
     display: flex;
-
   }
   .item{
     margin-right: 20px;
@@ -34,7 +33,6 @@
 
 <script>
 // import SelectItem from '@/components/SelectItem.vue';
-
 export default {
   components: {
     // SelectItem
@@ -51,7 +49,6 @@ export default {
     this.secondSend()
     // this.thirdSend()
     // this.fourthSend()
-
   },
   methods:{
     firstSend(){
@@ -90,7 +87,7 @@ export default {
       this.activeID = id
       this.$axios.post('/api/fourth',{blogID:id})
       .then((res)=>{
-        console.log('fourthSend请求成功', res)
+        console.log('从数据库获取数据成功', res)
         this.detailInfo = res.data[0]
       }).catch((err)=>{
         console.log('从数据库获取数据失败', err)
