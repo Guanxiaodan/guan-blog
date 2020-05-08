@@ -93,7 +93,7 @@ export default {
         console.log('fourthSend请求成功', res)
         this.detailInfo = res.data[0]
       }).catch((err)=>{
-        console.log('fourthSend请求失败', err)
+        console.log('从数据库获取数据失败', err)
       })
     },
   },
